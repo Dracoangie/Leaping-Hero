@@ -25,7 +25,7 @@ Este repositorio contiene **dos versiones del juego**, cada una desarrollada con
 - Gráficos mejorados, física y animaciones más avanzadas.
 - Rama dedicada: [`unity-version`](https://github.com/tuusuario/leaping-hero/tree/unity-version)
 
-> 🧠 **Todos los assets, tanto gráficos como sonoros, son originales y creados por mí.**
+> **Todos los assets, tanto gráficos como sonoros, son originales y creados por mí.**
 
 ## 🌱 Estructura de ramas
 
@@ -33,10 +33,21 @@ Este repositorio contiene **dos versiones del juego**, cada una desarrollada con
 - `web-version`: Rama dedicada al desarrollo de la versión web en JavaScript.
 - `unity-version`: Rama dedicada al desarrollo del proyecto en Unity.
 
-## 🚀 Cómo empezar
+## 🖥️ Cómo empezar
 
 ### Web
 
-```bash
-cd web
-open index.html
+- **En Windows:**
+  ```bash
+  cd web
+  start index.html
+  
+- **En macOS:**
+  ```bash
+  cd web
+  open index.html
+
+- **En Linux:**
+  ```bash
+  cd web
+  xdg-open index.html
