@@ -15,7 +15,7 @@
 - 💥 Combina mecánicas simples con una historia envolvente y combates dinámicos.
 
 <p align="center">
-  ![Slime](extra-assets/Slime_smile.gif)
+  <img src="extra-assets/Slime_smile.gif" alt="Slime feliz" width="150"/>
 </p>
 
 ## 🧑‍💻 Tecnologías utilizadas
