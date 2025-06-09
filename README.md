@@ -1,14 +1,18 @@
 # 🧗‍♂️ Leaping Hero
 
-![Carátula del juego](extra-assets/leapingHeroCartel.png)
+![Cover](extra-assets/leapingHeroCartel.png)
 
 **Leaping Hero** es un juego de aventuras protagonizado por un joven héroe que, al iniciar su travesía, se encuentra con un peculiar anciano que le pide ayuda para salvar su aldea de una invasión de slimes.
 
 ## 🎮 Sobre el juego
 
+![Protagonista](extra-assets/Personaje-export.png)
+
 - 🌍 El mundo de **Leaping Hero** está lleno de acción, plataformas y enemigos viscosos.
 - 🧓 El anciano guía al héroe en su misión, desvelando secretos del pasado y los peligros que acechan.
 - 💥 Combina mecánicas simples con una historia envolvente y combates dinámicos.
+
+![Slime](extra-assets/Slime_smile.gif)
 
 ## 🧑‍💻 Tecnologías utilizadas
 
