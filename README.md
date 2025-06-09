@@ -6,13 +6,17 @@
 
 ## 🎮 Sobre el juego
 
-![Protagonista](extra-assets/Personaje-export.png)
+<p align="center">
+  <img src="extra-assets/Personaje-export.png" alt="Protagonista" width="200"/>
+</p>
 
 - 🌍 El mundo de **Leaping Hero** está lleno de acción, plataformas y enemigos viscosos.
 - 🧓 El anciano guía al héroe en su misión, desvelando secretos del pasado y los peligros que acechan.
 - 💥 Combina mecánicas simples con una historia envolvente y combates dinámicos.
 
-![Slime](extra-assets/Slime_smile.gif)
+<p align="center">
+  ![Slime](extra-assets/Slime_smile.gif)
+</p>
 
 ## 🧑‍💻 Tecnologías utilizadas
 
