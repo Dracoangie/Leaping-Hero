@@ -1,57 +1,93 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float movingSpeed;
     public float jumpForce;
-    private float moveInput;
+    public float acceleration = 50f;
+    public float deceleration = 50f;
 
     private bool facingRight = false;
     [HideInInspector]
     public bool deathState = false;
+    private bool jumpBuffered = false;
 
-    private bool isGrounded;
-    public Transform groundCheck;
     public LayerMask whatIsGround;
-
-
     private new Rigidbody2D rigidbody;
-    //private Animator animator;
-//    private GameManager gameManager;
+    private Animator animator;
+    private bool isJumping = false;
+
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        //animator = GetComponent<Animator>();
-//        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
-
-    private void FixedUpdate()
-    {
-        CheckGround();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        if (Input.GetButton("Horizontal"))
+        move();
+        jump();
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+            deathState = true;
+        else
+            deathState = false;
+    }
+
+    void move()
+    {
+        float moveInput = Input.GetAxisRaw("Horizontal");
+
+        if (moveInput != 0)
         {
-            moveInput = Input.GetAxis("Horizontal");
-            Vector3 direction = transform.right * moveInput;
-            rigidbody.linearVelocity = new Vector2(moveInput * movingSpeed, rigidbody.linearVelocityY);
-            //animator.SetInteger("playerState", 1);
+            float targetVelocityX = moveInput * movingSpeed;
+            float smoothedVelocityX = Mathf.Lerp(rigidbody.linearVelocityX, targetVelocityX, acceleration * Time.deltaTime);
+            rigidbody.linearVelocityX = smoothedVelocityX;
+            animator.SetBool("isMoving", true);
         }
-        //else
-        //    if (isGrounded) animator.SetInteger("playerState", 0);
-
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-            rigidbody.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
-        //if (!isGrounded)
-        //    animator.SetInteger("playerState", 2);
-
-        if (facingRight == false && moveInput > 0)
+        else
+        {
+            animator.SetBool("isMoving", false);
+            float smoothedVelocityX = Mathf.MoveTowards(rigidbody.linearVelocityX, 0f, deceleration * Time.deltaTime);
+            rigidbody.linearVelocityX = smoothedVelocityX;
+        }
+        if (!facingRight && moveInput > 0)
             Flip();
-        else if (facingRight == true && moveInput < 0)
+        else if (facingRight && moveInput < 0)
             Flip();
+    }
+
+    void jump()
+    {
+        if (CheckGround())
+        {
+            isJumping = false;
+        }
+        if (CheckGround() && Input.GetKey(KeyCode.Space))
+        {
+            if (!jumpBuffered && !isJumping)
+            {
+                jumpBuffered = true;
+                StartCoroutine(JumpWithAnticipation());
+            }
+        }
+        else if (!Input.GetKey(KeyCode.Space))
+        {
+            jumpBuffered = false;
+        }
+    }
+
+    IEnumerator JumpWithAnticipation()
+    {
+        isJumping = true;
+        animator.Play("Player_StartJump", 0, 0f);
+        yield return new WaitForSeconds(0.08f);
+        rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
     private void Flip()
@@ -62,22 +98,17 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = Scaler;
     }
 
-    private void CheckGround()
+    private bool CheckGround()
     {
         Vector2 origin = transform.position;
         Vector2 size = new Vector2(0.65f, 0.1f);
         float distance = 0.5f;
+        bool isGrounded;
 
         RaycastHit2D hit = Physics2D.BoxCast(origin, size, 0f, Vector2.down, distance, whatIsGround);
         isGrounded = hit.collider != null;
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Enemy")
-            deathState = true;
-        else
-            deathState = false;
+        animator.SetBool("isGround", isGrounded);
+        return (isGrounded);
     }
 
     private void OnDrawGizmosSelected()
