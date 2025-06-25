@@ -149,19 +149,19 @@ TextureImporter:
       name: Slime_azul_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 159
-        width: 72
-        height: 62
+        x: 0
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2fe2a68011f7cfc70800000000000000
+      spriteID: 85e5ea3e69423cf4fb0a24540520ffc1
       internalID: 9006213065966497522
       vertices: []
       indices: 
@@ -171,19 +171,19 @@ TextureImporter:
       name: Slime_azul_1
       rect:
         serializedVersion: 2
-        x: 84
-        y: 159
-        width: 72
-        height: 67
+        x: 16
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 32ca735a1ab3d2160800000000000000
+      spriteID: e91720ad8e8a84944a707cb893e5bb64
       internalID: 7002318561078651939
       vertices: []
       indices: 
@@ -193,19 +193,19 @@ TextureImporter:
       name: Slime_azul_2
       rect:
         serializedVersion: 2
-        x: 159
-        y: 159
-        width: 77
-        height: 67
+        x: 32
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: dc8bc728fe64568b0800000000000000
+      spriteID: 8e7f4d153b2b8ce42948fde584ad6f59
       internalID: -5159639803582695219
       vertices: []
       indices: 
@@ -215,19 +215,19 @@ TextureImporter:
       name: Slime_azul_3
       rect:
         serializedVersion: 2
-        x: 239
-        y: 159
-        width: 77
-        height: 62
+        x: 48
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 21c344d378724a360800000000000000
+      spriteID: 1eb113e960da38a4dbf5b1ccada9fba2
       internalID: 7179907167737363474
       vertices: []
       indices: 
@@ -237,19 +237,19 @@ TextureImporter:
       name: Slime_azul_4
       rect:
         serializedVersion: 2
-        x: 4
-        y: 79
-        width: 72
-        height: 62
+        x: 0
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 70cd8e1a4046468c0800000000000000
+      spriteID: f2785c7e4d8a332449c40105bc1abd2f
       internalID: -4006967797393859577
       vertices: []
       indices: 
@@ -259,19 +259,19 @@ TextureImporter:
       name: Slime_azul_5
       rect:
         serializedVersion: 2
-        x: 84
-        y: 79
-        width: 72
-        height: 67
+        x: 16
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3d7949ab4936b3b10800000000000000
+      spriteID: c88510a56b15be04ca804f032373cb69
       internalID: 1962271553086592979
       vertices: []
       indices: 
@@ -281,19 +281,19 @@ TextureImporter:
       name: Slime_azul_6
       rect:
         serializedVersion: 2
-        x: 164
-        y: 79
-        width: 72
-        height: 67
+        x: 32
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: dabebf8b337d7d780800000000000000
+      spriteID: b4f5d5ed4e56651469aaebc36c5ac992
       internalID: -8658215141449667667
       vertices: []
       indices: 
@@ -303,19 +303,19 @@ TextureImporter:
       name: Slime_azul_7
       rect:
         serializedVersion: 2
-        x: 244
-        y: 79
-        width: 72
-        height: 62
+        x: 48
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 757aeb8b57aa24de0800000000000000
+      spriteID: 274fba93708cfe149a2dc43a1466afec
       internalID: -1350329515670329513
       vertices: []
       indices: 
@@ -325,19 +325,19 @@ TextureImporter:
       name: Slime_azul_8
       rect:
         serializedVersion: 2
-        x: 4
+        x: 0
         y: 0
-        width: 72
-        height: 61
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6a2da30d621247860800000000000000
+      spriteID: 5f3efc66848dc934db89c292d9b71a5d
       internalID: 7526677327828931238
       vertices: []
       indices: 
@@ -347,19 +347,19 @@ TextureImporter:
       name: Slime_azul_9
       rect:
         serializedVersion: 2
-        x: 84
+        x: 16
         y: 0
-        width: 72
-        height: 51
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 00b3988e455eb4c10800000000000000
+      spriteID: f589eca4bb0fa5c4f8d444be08902eed
       internalID: 2038975409156602624
       vertices: []
       indices: 
@@ -369,19 +369,19 @@ TextureImporter:
       name: Slime_azul_10
       rect:
         serializedVersion: 2
-        x: 159
+        x: 32
         y: 0
-        width: 77
-        height: 36
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c82588b8fe33b09b0800000000000000
+      spriteID: 494465c8e7faf974a942d4f3131bd5f0
       internalID: -5112935848017898868
       vertices: []
       indices: 
@@ -391,19 +391,19 @@ TextureImporter:
       name: Slime_azul_11
       rect:
         serializedVersion: 2
-        x: 239
+        x: 48
         y: 0
-        width: 77
-        height: 26
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1344b0f58981dfd30800000000000000
+      spriteID: 107e7aac9ea90e6489d68bb9e046f7b1
       internalID: 4466753448130069553
       vertices: []
       indices: 
@@ -413,7 +413,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ada03cc411c13ad4ea7f815a67e4970d
     internalID: 0
     vertices: []
     indices: 
