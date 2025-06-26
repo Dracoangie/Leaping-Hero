@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public float acceleration = 50f;
     public float deceleration = 50f;
 
+    [HideInInspector]
+    public bool canMove = true;
+
     private bool facingRight = false;
     [HideInInspector]
     public bool deathState = false;
@@ -23,8 +26,9 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private ParticleSystem runParticles;
+    private ParticleSystem runRParticles;
+    private ParticleSystem runLParticles;
     private ParticleSystem landParticles;
-
 
 
     void Start()
@@ -33,7 +37,9 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        runParticles = transform.Find("Run").GetComponent<ParticleSystem>();
+        runRParticles = transform.Find("Run").GetComponent<ParticleSystem>();
+        runLParticles = transform.Find("Run_L").GetComponent<ParticleSystem>();
+        runParticles = runRParticles;
         landParticles = transform.Find("Land").GetComponent<ParticleSystem>();
 
         originalScale = transform.localScale;
@@ -41,8 +47,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        move();
-        jump();
+        if (canMove)
+        {
+            move();
+            jump();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -85,9 +94,9 @@ public class PlayerMovement : MonoBehaviour
     void jump()
     {
         if (CheckGround())
-        {
             isJumping = false;
-        }
+        else if (runParticles.isPlaying)
+                runParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         if (CheckGround() && Input.GetKey(KeyCode.Space))
         {
             if (!jumpBuffered && !isJumping)
@@ -114,6 +123,22 @@ public class PlayerMovement : MonoBehaviour
     {
         facingRight = !facingRight;
         spriteRenderer.flipX = !facingRight;
+        if (runParticles.isPlaying)
+        {
+            runParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            if (runParticles == runRParticles)
+                runParticles = runLParticles;
+            else
+                runParticles = runRParticles;
+            runParticles.Play();
+        }
+        else
+        {
+            if (runParticles == runRParticles)
+                runParticles = runLParticles;
+            else
+                runParticles = runRParticles;
+        }
     }
 
     private bool CheckGround()
@@ -132,6 +157,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 landParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
                 landParticles.Play();
+                landParticles.transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+
             }
         }
         firstTime = false;
@@ -164,8 +191,6 @@ public class PlayerMovement : MonoBehaviour
 
         transform.localScale = originalScale;
     }
-
-
 
     private void OnDrawGizmosSelected()
     {

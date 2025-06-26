@@ -7162,6 +7162,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 611326880336656592, guid: 06fe4a0f489911e48b82d76d9981b59e, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 611326880336656592, guid: 06fe4a0f489911e48b82d76d9981b59e, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.29411766
+      objectReference: {fileID: 0}
+    - target: {fileID: 611326880336656592, guid: 06fe4a0f489911e48b82d76d9981b59e, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.30980393
+      objectReference: {fileID: 0}
+    - target: {fileID: 611326880336656592, guid: 06fe4a0f489911e48b82d76d9981b59e, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.27058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 611326880336656592, guid: 06fe4a0f489911e48b82d76d9981b59e, type: 3}
+      propertyPath: InitialModule.randomizeRotationDirection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 661713924959635548, guid: 06fe4a0f489911e48b82d76d9981b59e, type: 3}
       propertyPath: m_Flip.x
       value: 1
@@ -7178,19 +7198,27 @@ PrefabInstance:
       propertyPath: m_NormalDirection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3706745572417396119, guid: 06fe4a0f489911e48b82d76d9981b59e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 3709107346403671837, guid: 06fe4a0f489911e48b82d76d9981b59e, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.24705884
+      value: 0.29411766
       objectReference: {fileID: 0}
     - target: {fileID: 3709107346403671837, guid: 06fe4a0f489911e48b82d76d9981b59e, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9568628
+      value: 0.30980393
       objectReference: {fileID: 0}
     - target: {fileID: 3709107346403671837, guid: 06fe4a0f489911e48b82d76d9981b59e, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.56078434
+      value: 0.27058825
       objectReference: {fileID: 0}
     - target: {fileID: 4860149662067138664, guid: 06fe4a0f489911e48b82d76d9981b59e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7125499169009834305, guid: 06fe4a0f489911e48b82d76d9981b59e, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -7200,7 +7228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8022837319913098267, guid: 06fe4a0f489911e48b82d76d9981b59e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.501
+      value: -0.39
       objectReference: {fileID: 0}
     - target: {fileID: 8022837319913098267, guid: 06fe4a0f489911e48b82d76d9981b59e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7240,6 +7268,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9015273124688344562, guid: 06fe4a0f489911e48b82d76d9981b59e, type: 3}
       propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015273124688344562, guid: 06fe4a0f489911e48b82d76d9981b59e, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9015273124688344562, guid: 06fe4a0f489911e48b82d76d9981b59e, type: 3}
