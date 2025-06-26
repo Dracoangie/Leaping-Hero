@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,12 +18,25 @@ public class PlayerMovement : MonoBehaviour
     private new Rigidbody2D rigidbody;
     private Animator animator;
     private bool isJumping = false;
+    private bool firstTime = true;
+    private Vector3 originalScale;
+    private SpriteRenderer spriteRenderer;
+
+    private ParticleSystem runParticles;
+    private ParticleSystem landParticles;
+
 
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        runParticles = transform.Find("Run").GetComponent<ParticleSystem>();
+        landParticles = transform.Find("Land").GetComponent<ParticleSystem>();
+
+        originalScale = transform.localScale;
     }
 
     void Update()
@@ -49,12 +63,18 @@ public class PlayerMovement : MonoBehaviour
             float smoothedVelocityX = Mathf.Lerp(rigidbody.linearVelocityX, targetVelocityX, acceleration * Time.deltaTime);
             rigidbody.linearVelocityX = smoothedVelocityX;
             animator.SetBool("isMoving", true);
+
+            if (!runParticles.isPlaying && CheckGround())
+                runParticles.Play();
         }
         else
         {
             animator.SetBool("isMoving", false);
             float smoothedVelocityX = Mathf.MoveTowards(rigidbody.linearVelocityX, 0f, deceleration * Time.deltaTime);
             rigidbody.linearVelocityX = smoothedVelocityX;
+
+            if (runParticles.isPlaying)
+                runParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         }
         if (!facingRight && moveInput > 0)
             Flip();
@@ -73,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
             if (!jumpBuffered && !isJumping)
             {
                 jumpBuffered = true;
+                isJumping = true;
                 StartCoroutine(JumpWithAnticipation());
             }
         }
@@ -84,18 +105,15 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator JumpWithAnticipation()
     {
-        isJumping = true;
         animator.Play("Player_StartJump", 0, 0f);
-        yield return new WaitForSeconds(0.08f);
+        yield return new WaitForSeconds(0.06f);
         rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
     private void Flip()
     {
         facingRight = !facingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
+        spriteRenderer.flipX = !facingRight;
     }
 
     private bool CheckGround()
@@ -107,9 +125,47 @@ public class PlayerMovement : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.BoxCast(origin, size, 0f, Vector2.down, distance, whatIsGround);
         isGrounded = hit.collider != null;
+        if (isGrounded && !animator.GetBool("isGround") && !firstTime)
+        {
+            StartCoroutine(LandingStretch());
+            if (landParticles != null)
+            {
+                landParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                landParticles.Play();
+            }
+        }
+        firstTime = false;
         animator.SetBool("isGround", isGrounded);
         return (isGrounded);
     }
+
+    IEnumerator LandingStretch()
+    {
+        float duration = 0.2f;
+        float stretchX = 1.3f;
+        float stretchY = 0.7f;
+
+        Vector3 startScale = new Vector3(
+            originalScale.x * stretchX,
+            originalScale.y * stretchY,
+            originalScale.z
+        );
+
+        transform.localScale = startScale;
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+            transform.localScale = Vector3.Lerp(startScale, originalScale, t);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localScale = originalScale;
+    }
+
+
 
     private void OnDrawGizmosSelected()
     {
