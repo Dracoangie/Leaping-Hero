@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private bool hasDoubleJumped = false;
     private bool facingRight = false;
     private bool jumpBuffered = false;
+    private bool jumpBufferedDuringDash = false;
     private bool isJumping = false;
     private bool firstTime = true;
     #endregion
@@ -83,15 +84,10 @@ public class PlayerMovement : MonoBehaviour
             Move();
             Jump();
         }
+        else if (Input.GetKeyDown(KeyCode.Space))
+            jumpBufferedDuringDash = true;
 
         HandleDashInput();
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Enemy"))
-            // Aquí puedes agregar lógica de daño o muerte
-            return;
     }
     #endregion
 
@@ -179,6 +175,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (!Input.GetKey(KeyCode.Space))
         {
+            jumpBufferedDuringDash = false;
             jumpBuffered = false;
             if (!grounded && !isJumping)
                 animator.Play("Player_jump", 0, 0f);
@@ -249,9 +246,29 @@ public class PlayerMovement : MonoBehaviour
         animator.SetLayerWeight(0, 1);
         animator.SetLayerWeight(1, 0);
 
+        if (jumpBufferedDuringDash)
+        {
+            bool grounded = CheckGround();
+
+            if (grounded)
+            {
+                isJumping = true;
+                StartCoroutine(JumpWithAnticipation());
+            }
+            else if (!hasDoubleJumped && canDoubleJump)
+            {
+                hasDoubleJumped = true;
+                isJumping = true;
+                StartCoroutine(DoubleJump());
+            }
+
+            jumpBufferedDuringDash = false;
+        }
+
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
+
 
     void EmitTrailEndParticles()
     {
