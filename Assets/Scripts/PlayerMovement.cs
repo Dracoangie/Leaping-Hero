@@ -203,6 +203,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
+            dashParticles.transform.position = transform.position;
+            dashParticles.Play();
             StartCoroutine(Dash());
         }
 
@@ -222,16 +224,19 @@ public class PlayerMovement : MonoBehaviour
     {
         isDashing = true;
         canDash = false;
-
-        animator.SetLayerWeight(0, 0);
-        animator.SetLayerWeight(1, 1);
+        canMove = false;
 
         float originalGravity = rigidbody.gravityScale;
         rigidbody.gravityScale = 0f;
+        rigidbody.linearVelocity = new Vector2(0f, 0f);
 
+        animator.SetLayerWeight(0, 0);
+        animator.SetLayerWeight(1, 1);
+        animator.Play("Player_Dash", 1, 0);
+        yield return new WaitForSeconds(0.15f);
+
+        canMove = true;
         dashTrail.emitting = true;
-        dashParticles.transform.position = transform.position;
-        dashParticles.Play();
 
         float dashDirection = facingRight ? 1f : -1f;
         rigidbody.linearVelocity = new Vector2(dashDirection * dashForce, 0f);
