@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Ground
   - Enemy
-  - Coin
+  - Rock
   layers:
   - Default
   - TransparentFX

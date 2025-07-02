@@ -25,11 +25,11 @@ public class PlayerInteractions : MonoBehaviour
             deathState = false;
     }
     
-    /*
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Rock")
         {
         }
-    }*/
+    }
 }
