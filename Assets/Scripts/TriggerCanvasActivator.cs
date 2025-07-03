@@ -2,18 +2,40 @@ using UnityEngine;
 
 public class TriggerCanvasActivator : MonoBehaviour
 {
+    [SerializeField] private DialogueData dialogueToPlay;
     [SerializeField] private GameObject panelToShow;
-    [SerializeField] private bool showOnEnter = true;
+    [HideInInspector] public bool showOnEnter = true;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private bool onTrigger = false;
+
+    void Update()
+    {
+        if (onTrigger && Input.GetKeyDown(KeyCode.Space))
+        {
+            DialogueEvents.TriggerDialogue(dialogueToPlay);
+            showOnEnter = false;
+            panelToShow.SetActive(false);
+            onTrigger = false;
+        }
+	}
+
+	private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && showOnEnter)
-            panelToShow.SetActive(true);
+        {
+            if(showOnEnter)
+                panelToShow.SetActive(true);
+            onTrigger = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-            panelToShow.SetActive(false);
+        {
+            if(showOnEnter)
+                panelToShow.SetActive(false);
+            onTrigger = false;
+        }
     }
 }
