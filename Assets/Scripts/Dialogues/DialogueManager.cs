@@ -74,6 +74,7 @@ public class DialogueManager : MonoBehaviour
                 }
                 else
                 {
+                    DialogueEvents.EndDialogue();
                     dialoguePanel.SetActive(false);
                 }
             }

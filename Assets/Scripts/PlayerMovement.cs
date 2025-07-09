@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region States
-    [HideInInspector] public bool canMove = true;
+    [HideInInspector] private bool canMove = true;
     [HideInInspector] public bool canDoubleJump = true;
     private bool hasDoubleJumped = false;
     private bool facingRight = false;
@@ -63,6 +63,10 @@ public class PlayerMovement : MonoBehaviour
 
         visualTransform = transform.Find("Visual");
         originalScale = visualTransform.localScale;
+
+
+        DialogueEvents.OnDialogueTriggered += StartDialogue;
+        DialogueEvents.OnDialogueEnded += EndDialogue;
 
         runRParticles = transform.Find("Run").GetComponent<ParticleSystem>();
         runLParticles = transform.Find("Run_L").GetComponent<ParticleSystem>();
@@ -141,6 +145,19 @@ public class PlayerMovement : MonoBehaviour
             runParticles = (runParticles == runRParticles) ? runLParticles : runRParticles;
         }
     }
+
+    public bool GetCanMove()
+    { return canMove; }
+    public void SetCanMove(bool move)
+    { canMove = move; }
+
+    public void StartDialogue(DialogueData dialogue)
+    { 
+        SetCanMove(false);
+        rigidbody.linearVelocity = Vector2.zero;
+    }
+    public void EndDialogue()
+    { SetCanMove(true); }
     #endregion
 
     #region Jump & Double Jump
@@ -283,8 +300,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 secondLast = dashTrail.GetPosition(dashTrail.positionCount - 2);
             Vector3 direction = (lastPoint - secondLast).normalized;
 
-            trailEndParticles.transform.position = lastPoint;
-            trailEndParticles.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
+            trailEndParticles.transform.SetPositionAndRotation(lastPoint, Quaternion.LookRotation(Vector3.forward, direction));
             trailEndParticles.Emit(1);
         }
     }
@@ -294,7 +310,7 @@ public class PlayerMovement : MonoBehaviour
     private bool CheckGround()
     {
         Vector2 origin = transform.position;
-        Vector2 size = new Vector2(0.8f, 0.1f);
+        Vector2 size = new (0.8f, 0.1f);
         float distance = 0.5f;
 
         RaycastHit2D hit = Physics2D.BoxCast(origin, size, 0f, Vector2.down, distance, whatIsGround);
@@ -325,7 +341,7 @@ public class PlayerMovement : MonoBehaviour
         float stretchX = 1.3f;
         float stretchY = 0.7f;
 
-        Vector3 startScale = new Vector3(originalScale.x * stretchX, originalScale.y * stretchY, originalScale.z);
+        Vector3 startScale = new (originalScale.x * stretchX, originalScale.y * stretchY, originalScale.z);
         float offsetY = (originalScale.y - startScale.y) / 2f;
 
         Vector3 originalPosition = visualTransform.localPosition;
@@ -353,7 +369,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Vector2 origin = transform.position;
-        Vector2 size = new Vector2(0.8f, 0.1f);
+        Vector2 size = new (0.8f, 0.1f);
         Vector2 castPoint = origin + Vector2.down * 0.5f;
 
         Gizmos.color = Color.yellow;

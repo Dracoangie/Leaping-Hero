@@ -10,7 +10,7 @@ public class TriggerCanvasActivator : MonoBehaviour
 
     void Update()
     {
-        if (onTrigger && Input.GetKeyDown(KeyCode.Space))
+        if (onTrigger && Input.GetKeyDown(KeyCode.E))
         {
             DialogueEvents.TriggerDialogue(dialogueToPlay);
             showOnEnter = false;
@@ -21,7 +21,7 @@ public class TriggerCanvasActivator : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && showOnEnter)
+        if (other.CompareTag("Player"))
         {
             if(showOnEnter)
                 panelToShow.SetActive(true);
