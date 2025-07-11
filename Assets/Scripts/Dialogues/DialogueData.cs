@@ -21,4 +21,6 @@ public class DialogueData : ScriptableObject
 
     [SerializeField]
     public DialogueLine[] dialogueLines;
+    public DialogueData nextDialogue;
+
 }

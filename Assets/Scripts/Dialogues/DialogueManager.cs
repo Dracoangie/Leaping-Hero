@@ -72,6 +72,8 @@ public class DialogueManager : MonoBehaviour
                 {
                     ShowLine(currentLine);
                 }
+                else if (currentDialogue.nextDialogue)
+                    StartDialogue(currentDialogue.nextDialogue);
                 else
                 {
                     DialogueEvents.EndDialogue();

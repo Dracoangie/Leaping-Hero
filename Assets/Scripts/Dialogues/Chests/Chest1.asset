@@ -21,3 +21,4 @@ MonoBehaviour:
   - text: You found a DobleJump!
     fontSize: 22
     textSpeed: 0.05
+  nextDialogue: {fileID: 0}

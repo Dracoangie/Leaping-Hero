@@ -22,6 +22,7 @@ public class Chest : MonoBehaviour
             animator.Play("ChestOpen");
         }
     }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
