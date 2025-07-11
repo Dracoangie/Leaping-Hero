@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,12 +21,12 @@ public class PlayerMovement : MonoBehaviour
     private float emitInterval = 0.02f;
 
     private bool isDashing = false;
-    private bool canDash = true;
     #endregion
 
     #region States
     [HideInInspector] private bool canMove = true;
-    [HideInInspector] public bool canDoubleJump = true;
+    [HideInInspector] public bool canDoubleJump = false;
+    [HideInInspector] public bool canDash = false;
     private bool hasDoubleJumped = false;
     private bool facingRight = false;
     private bool jumpBuffered = false;
@@ -76,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         dashParticles = transform.Find("Dash").GetComponent<ParticleSystem>();
         trailEndParticles = transform.Find("TrailEnd").GetComponent<ParticleSystem>();
         dashTrail.emitting = false;
-        canDoubleJump = true;
+        canDoubleJump = false;
     }
 
     void Update()
@@ -149,13 +148,14 @@ public class PlayerMovement : MonoBehaviour
     public bool GetCanMove()
     { return canMove; }
     public void SetCanMove(bool move)
-    { canMove = move; }
+    {
+        canMove = move;
+        if(!move)
+            rigidbody.linearVelocity = Vector2.zero;
+    }
 
     public void StartDialogue(DialogueData dialogue)
-    { 
-        SetCanMove(false);
-        rigidbody.linearVelocity = Vector2.zero;
-    }
+    {SetCanMove(false);}
     public void EndDialogue()
     { SetCanMove(true); }
     #endregion
