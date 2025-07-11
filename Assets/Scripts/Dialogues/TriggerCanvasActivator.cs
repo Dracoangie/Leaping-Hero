@@ -4,18 +4,26 @@ public class TriggerCanvasActivator : MonoBehaviour
 {
     [SerializeField] private DialogueData dialogueToPlay;
     [SerializeField] private GameObject panelToShow;
+    [SerializeField] private bool dialogueAgain;
+    private bool dialogueAgainAux;
     [HideInInspector] public bool showOnEnter = true;
 
     private bool onTrigger = false;
 
+    private void Start()
+    {
+        dialogueAgainAux = true;
+    }
+
     void Update()
     {
-        if (onTrigger && Input.GetKeyDown(KeyCode.E))
+        if (onTrigger && Input.GetKeyDown(KeyCode.E) && dialogueAgainAux)
         {
             DialogueEvents.TriggerDialogue(dialogueToPlay);
             showOnEnter = false;
             panelToShow.SetActive(false);
             onTrigger = false;
+            dialogueAgainAux = dialogueAgain;
         }
 	}
 
