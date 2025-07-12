@@ -62,8 +62,8 @@ MonoBehaviour:
   jumpForce: 40
   acceleration: 8
   deceleration: 50
-  dashForce: 40
-  dashDuration: 0.08
+  dashForce: 26
+  dashDuration: 0.15
   dashCooldown: 0.5
   emitInterval: 0.02
   canDoubleJump: 0
