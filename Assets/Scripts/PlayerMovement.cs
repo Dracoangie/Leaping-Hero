@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private bool jumpBuffered = false;
     private bool jumpBufferedDuringDash = false;
     private bool isJumping = false;
+    private bool isbufferJumping = false;
     private bool firstTime = true;
     #endregion
 
@@ -167,8 +168,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (grounded)
         {
-            isJumping = false;
             hasDoubleJumped = false;
+            isJumping = false;
         }
         else if (runParticles.isPlaying)
         {
@@ -177,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (grounded && !jumpBuffered && !isJumping)
+            if (grounded && !jumpBuffered && !isJumping && !isbufferJumping)
             {
                 jumpBuffered = true;
                 isJumping = true;
@@ -188,6 +189,16 @@ public class PlayerMovement : MonoBehaviour
                 hasDoubleJumped = true;
                 isJumping = true;
                 StartCoroutine(DoubleJump());
+            }
+        }
+        else if (Input.GetKey(KeyCode.Space))
+        {
+            if (grounded && !jumpBuffered && !isJumping && !isbufferJumping)
+            {
+                jumpBuffered = true;
+                isJumping = true;
+                isbufferJumping = true;
+                StartCoroutine(JumpWithAnticipation());
             }
         }
         else if (!Input.GetKey(KeyCode.Space))
@@ -204,6 +215,8 @@ public class PlayerMovement : MonoBehaviour
         animator.Play("Player_StartJump", 0, 0f);
         yield return new WaitForSeconds(0.06f);
         rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.1f);
+        isbufferJumping = false;
     }
 
     IEnumerator DoubleJump()

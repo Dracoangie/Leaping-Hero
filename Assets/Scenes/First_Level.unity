@@ -43763,6 +43763,8 @@ MonoBehaviour:
   FollowSpeed: 6
   yOffset: 1
   target: {fileID: 2025026660}
+  deathZoneY: -3
+  highSpeedMultiplier: 2
 --- !u!1 &1926316623
 GameObject:
   m_ObjectHideFlags: 0
