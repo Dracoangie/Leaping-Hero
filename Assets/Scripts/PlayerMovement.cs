@@ -193,7 +193,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Space))
         {
-            if (grounded && !jumpBuffered && !isJumping && !isbufferJumping)
+            if (grounded && !jumpBuffered && !isJumping && !isbufferJumping && !canDoubleJump)
             {
                 jumpBuffered = true;
                 isJumping = true;
