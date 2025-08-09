@@ -53,7 +53,9 @@ public class SceneCamera : MonoBehaviour
 
 
             if (mode == CameraMode.FollowTarget)
-                transform.position = Vector3.Lerp(atcPos, new Vector3(target.position.x, target.position.y + yOffset, -10f), t);
+            {
+                transform.position = FollowTargetUpdate();
+            }
             else
                 transform.position = Vector3.Lerp(atcPos, movePosition, t);
             cam.orthographicSize = Mathf.Lerp(atcSize, fixedSize, t);
@@ -69,7 +71,7 @@ public class SceneCamera : MonoBehaviour
         switch (mode)
         {
             case CameraMode.FollowTarget:
-                FollowTargetUpdate();
+                transform.position = FollowTargetUpdate();
                 break;
 
             case CameraMode.Fixed:
@@ -77,10 +79,8 @@ public class SceneCamera : MonoBehaviour
         }
     }
 
-    void FollowTargetUpdate()
+    Vector3 FollowTargetUpdate()
     {
-        if (target == null) return;
-
         if (!inDeathZone && target.position.y < transform.position.y + deathZoneY)
         {
             currentFollowSpeed = FollowSpeed * highSpeedMultiplier;
@@ -98,7 +98,7 @@ public class SceneCamera : MonoBehaviour
         float newX = Mathf.Lerp(currentPos.x, targetPos.x, FollowSpeed * Time.deltaTime);
         float newY = Mathf.Lerp(currentPos.y, targetPos.y, currentFollowSpeed * Time.deltaTime);
 
-        transform.position = new Vector3(newX, newY, targetPos.z);
+        return new Vector3(newX, newY, targetPos.z);
     }
 
 
