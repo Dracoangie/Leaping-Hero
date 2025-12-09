@@ -17,8 +17,6 @@ public class PlayerInteractions : MonoBehaviour
     {
         if (isInChest && Input.GetKeyDown(KeyCode.E))
             ChestPowrUp();
-        if (deathState)
-        {}
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -26,7 +24,7 @@ public class PlayerInteractions : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Enemy":
-                deathState = true;
+                interDead();
                 break;
             default:
                 break;
@@ -71,5 +69,16 @@ public class PlayerInteractions : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    void interDead()
+    {
+        if(!deathState)
+        {
+            DeadEvent.PlayerDead();
+            deathState = true;
+            playerMovement.dead();
+        }
+
     }
 }

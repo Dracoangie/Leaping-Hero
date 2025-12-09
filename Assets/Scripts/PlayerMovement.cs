@@ -378,6 +378,16 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
 
+    public void dead()
+    
+    {
+        animator.SetLayerWeight(0, 0);
+        animator.SetLayerWeight(2, 1);
+        animator.Play("Player_Dead", 0, 0f);
+        canMove = false;
+        rigidbody.linearVelocity = Vector2.zero;
+    }
+
     #region Gizmos
     private void OnDrawGizmosSelected()
     {
@@ -387,6 +397,7 @@ public class PlayerMovement : MonoBehaviour
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(castPoint, size);
+        
     }
     #endregion
 }
