@@ -20,7 +20,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float emitInterval = 0.02f;
 
-    private bool isDashing = false;
+    [HideInInspector]
+    public bool isDashing = false;
     #endregion
 
     #region States
