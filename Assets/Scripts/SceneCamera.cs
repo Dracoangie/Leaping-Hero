@@ -14,6 +14,9 @@ public class SceneCamera : MonoBehaviour
 
     [HideInInspector]
     public CameraMode mode = CameraMode.Fixed;
+    [Header("Start config")]
+    public Vector3 startPos = new(-5, 3.5f, -10f);
+    public CameraMode startCameramode = CameraMode.Fixed;
 
     [Header("Follow Settings")]
     public float FollowSpeed = 1.0f;
@@ -38,8 +41,9 @@ public class SceneCamera : MonoBehaviour
         cam = GetComponent<Camera>();
 
         currentFollowSpeed = FollowSpeed;
-        transform.position = new Vector3(-5, 3.5f, -10f); ;
+        transform.position = startPos;
         cam.orthographicSize = 6.0f;
+        mode = startCameramode;
     }
 
     void FixedUpdate()
