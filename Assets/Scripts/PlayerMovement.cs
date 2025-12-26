@@ -5,12 +5,14 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
     #region Movement Variables;
-    private Vector2 moveInput;
+    private float moveInput;
 
     public float movingSpeed;
     public float jumpForce;
     public float acceleration = 50f;
     public float deceleration = 50f;
+    private bool jumpHeld = false;
+    private bool grounded = true;
     #endregion
 
     #region Dash Variables
@@ -92,8 +94,10 @@ public class PlayerMovement : MonoBehaviour
             Move();
             Jump();
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
+        else if (jumpHeld)
+        {
             jumpBufferedDuringDash = true;
+        }
 
         HandleDashInput();
     }
@@ -102,7 +106,6 @@ public class PlayerMovement : MonoBehaviour
     #region Movement
     void Move()
     {
-        float moveInput = Input.GetAxisRaw("Horizontal");
 
         if (moveInput != 0)
         {
@@ -155,8 +158,11 @@ public class PlayerMovement : MonoBehaviour
     public void SetCanMove(bool move)
     {
         canMove = move;
-        if(!move)
+        if(!move){
             rigidbody.linearVelocity = Vector2.zero;
+            if (runParticles.isPlaying)
+                runParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        }
     }
 
     public void StartDialogue(DialogueData dialogue)
@@ -168,8 +174,7 @@ public class PlayerMovement : MonoBehaviour
     #region Jump & Double Jump
     void Jump()
     {
-        bool grounded = CheckGround();
-
+        grounded = CheckGround();
         if (grounded)
         {
             hasDoubleJumped = false;
@@ -180,37 +185,17 @@ public class PlayerMovement : MonoBehaviour
             runParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (jumpHeld)
         {
-            if (grounded && !jumpBuffered && !isJumping && !isbufferJumping)
-            {
-                jumpBuffered = true;
-                isJumping = true;
-                StartCoroutine(JumpWithAnticipation());
-            }
-            else if (!grounded && canDoubleJump && !hasDoubleJumped)
-            {
-                hasDoubleJumped = true;
-                isJumping = true;
-                StartCoroutine(DoubleJump());
-            }
-        }
-        else if (Input.GetKey(KeyCode.Space))
-        {
+            Debug.Log("\"ON UPDATE jumpHeld = " + jumpHeld);
             if (grounded && !jumpBuffered && !isJumping && !isbufferJumping && !canDoubleJump)
             {
+                Debug.Log(jumpBuffered);
                 jumpBuffered = true;
                 isJumping = true;
                 isbufferJumping = true;
                 StartCoroutine(JumpWithAnticipation());
             }
-        }
-        else if (!Input.GetKey(KeyCode.Space))
-        {
-            jumpBufferedDuringDash = false;
-            jumpBuffered = false;
-            if (!grounded && !isJumping)
-                animator.Play("Player_jump", 0, 0f);
         }
     }
 
@@ -351,6 +336,54 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
 
+    #region Input System
+
+    void OnMovement(InputValue inputValue)
+    {
+        moveInput = inputValue.Get<float>();
+    }
+
+    void OnJump(InputValue inputValue)
+    {
+        jumpHeld = inputValue.isPressed;
+
+        if (jumpHeld)
+        {
+            if (grounded && !jumpBuffered && !isJumping && !isbufferJumping && canMove)
+            {
+                Debug.Log(jumpHeld);
+                jumpBuffered = true;
+                isJumping = true;
+                StartCoroutine(JumpWithAnticipation());
+            }
+            else if (!grounded && canDoubleJump && !hasDoubleJumped)
+            {
+                hasDoubleJumped = true;
+                isJumping = true;
+                StartCoroutine(DoubleJump());
+            }
+        }
+        else
+        {
+            jumpBufferedDuringDash = false;
+            jumpBuffered = false;
+            if (!grounded && !isJumping)
+                animator.Play("Player_jump", 0, 0f);
+        }
+    }
+
+    void OnDash(InputValue value)
+    {
+        if (value.isPressed && canDash && canMove)
+        {
+            dashParticles.transform.position = transform.position;
+            dashParticles.Play();
+            StartCoroutine(Dash());
+        }
+    }
+
+    #endregion
+
     #region Visual Stretch Effect
     IEnumerator LandingStretch()
     {
@@ -388,8 +421,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetLayerWeight(0, 0);
         animator.SetLayerWeight(2, 1);
         animator.Play("Player_Dead", 0, 0f);
-        canMove = false;
-        rigidbody.linearVelocity = Vector2.zero;
+        SetCanMove(false);
     }
 
     #region Gizmos

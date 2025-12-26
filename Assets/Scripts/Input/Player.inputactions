@@ -7,7 +7,7 @@
             "id": "378fa431-24f3-4f88-919e-4c7e3d2566e0",
             "actions": [
                 {
-                    "name": "Interaction",
+                    "name": "Inter",
                     "type": "Button",
                     "id": "618745a8-8ac3-4e62-902e-cdac7a507946",
                     "expectedControlType": "",
@@ -35,7 +35,7 @@
                 },
                 {
                     "name": "Jump",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "3c919a38-931e-42f1-85c7-d361f2da035f",
                     "expectedControlType": "",
                     "processors": "",
@@ -60,7 +60,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interaction",
+                    "action": "Inter",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -71,7 +71,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interaction",
+                    "action": "Inter",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -222,6 +222,17 @@
                     "name": "",
                     "id": "b6cc6140-cb32-4c74-b0a2-c1bb745f33e8",
                     "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c9f97339-6938-4dd8-9e45-2d8d13fe12ae",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
