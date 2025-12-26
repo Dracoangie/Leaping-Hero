@@ -1,22 +1,18 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInteractions : MonoBehaviour
 {
     private bool deathState = false;
     private bool isInChest;
     private int chestsOpened;
+    private bool interPressed;
 
     private PlayerMovement playerMovement;
 
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
-    }
-
-    void Update()
-    {
-        if (isInChest && Input.GetKeyDown(KeyCode.E))
-            ChestPowrUp();
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -73,5 +69,12 @@ public class PlayerInteractions : MonoBehaviour
         else if(!deathState && playerMovement.isDashing)
             other.GetComponent<Enemy>().Die();
 
+    }
+
+    void OnInter(InputValue value)
+    {
+        interPressed = value.isPressed;
+        if (isInChest && interPressed)
+            ChestPowrUp();
     }
 }

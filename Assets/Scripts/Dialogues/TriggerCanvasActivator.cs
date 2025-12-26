@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TriggerCanvasActivator : MonoBehaviour
 {
@@ -9,23 +10,12 @@ public class TriggerCanvasActivator : MonoBehaviour
     [HideInInspector] public bool showOnEnter = true;
 
     private bool onTrigger = false;
+    private bool interPressed = false;
 
     private void Start()
     {
         dialogueAgainAux = true;
     }
-
-    void Update()
-    {
-        if (onTrigger && Input.GetKeyDown(KeyCode.E) && dialogueAgainAux)
-        {
-            DialogueEvents.TriggerDialogue(dialogueToPlay);
-            showOnEnter = false;
-            panelToShow.SetActive(false);
-            onTrigger = false;
-            dialogueAgainAux = dialogueAgain;
-        }
-	}
 
 	private void OnTriggerEnter2D(Collider2D other)
     {
@@ -44,6 +34,19 @@ public class TriggerCanvasActivator : MonoBehaviour
             if(showOnEnter)
                 panelToShow.SetActive(false);
             onTrigger = false;
+        }
+    }
+
+    void OnInter(InputValue value)
+    {
+        interPressed = value.isPressed;
+        if (onTrigger && interPressed && dialogueAgainAux)
+        {
+            DialogueEvents.TriggerDialogue(dialogueToPlay);
+            showOnEnter = false;
+            panelToShow.SetActive(false);
+            onTrigger = false;
+            dialogueAgainAux = dialogueAgain;
         }
     }
 }

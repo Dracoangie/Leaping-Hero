@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector]
     public bool isDashing = false;
+    private bool dashPressed = false;
     #endregion
 
     #region States
@@ -187,10 +188,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (jumpHeld)
         {
-            Debug.Log("\"ON UPDATE jumpHeld = " + jumpHeld);
             if (grounded && !jumpBuffered && !isJumping && !isbufferJumping && !canDoubleJump)
             {
-                Debug.Log(jumpBuffered);
                 jumpBuffered = true;
                 isJumping = true;
                 isbufferJumping = true;
@@ -220,7 +219,7 @@ public class PlayerMovement : MonoBehaviour
     #region Dash
     void HandleDashInput()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        if (dashPressed && canDash)
         {
             dashParticles.transform.position = transform.position;
             dashParticles.Play();
@@ -351,7 +350,6 @@ public class PlayerMovement : MonoBehaviour
         {
             if (grounded && !jumpBuffered && !isJumping && !isbufferJumping && canMove)
             {
-                Debug.Log(jumpHeld);
                 jumpBuffered = true;
                 isJumping = true;
                 StartCoroutine(JumpWithAnticipation());
@@ -374,12 +372,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDash(InputValue value)
     {
-        if (value.isPressed && canDash && canMove)
-        {
-            dashParticles.transform.position = transform.position;
-            dashParticles.Play();
-            StartCoroutine(Dash());
-        }
+        dashPressed = value.isPressed;
     }
 
     #endregion
