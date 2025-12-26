@@ -27,7 +27,7 @@ public class PlayerInteractions : MonoBehaviour
                 isInChest = true;
                 break;
             case "Enemy":
-                interDead();
+                interDead(other);
                 break;
             default:
                 break;
@@ -62,7 +62,7 @@ public class PlayerInteractions : MonoBehaviour
         }
     }
 
-    void interDead()
+    void interDead(Collider2D other)
     {
         if(!deathState && playerMovement.isDashing == false)
         {
@@ -70,6 +70,8 @@ public class PlayerInteractions : MonoBehaviour
             deathState = true;
             playerMovement.dead();
         }
+        else if(!deathState && playerMovement.isDashing)
+            other.GetComponent<Enemy>().Die();
 
     }
 }

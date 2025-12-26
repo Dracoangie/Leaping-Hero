@@ -1,43 +1,43 @@
 fileFormatVersion: 2
-guid: 9a2b873aff1806243ae139c1116f1038
+guid: 04fe00ecdb2c84c4b9e30c4c44a96380
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9006213065966497522
-    second: Slime_azul_0
+      213: 4683560749069818934
+    second: Slime_azu_Izquierdal_0
   - first:
-      213: 7002318561078651939
-    second: Slime_azul_1
+      213: 3612035732543648947
+    second: Slime_azu_Izquierdal_1
   - first:
-      213: -5159639803582695219
-    second: Slime_azul_2
+      213: 91003681904419179
+    second: Slime_azu_Izquierdal_2
   - first:
-      213: 7179907167737363474
-    second: Slime_azul_3
+      213: 5253215677594321618
+    second: Slime_azu_Izquierdal_3
   - first:
-      213: -4006967797393859577
-    second: Slime_azul_4
+      213: -1038592079019039105
+    second: Slime_azu_Izquierdal_4
   - first:
-      213: 1962271553086592979
-    second: Slime_azul_5
+      213: 6768993126196890411
+    second: Slime_azu_Izquierdal_5
   - first:
-      213: -8658215141449667667
-    second: Slime_azul_6
+      213: 5683847642261440543
+    second: Slime_azu_Izquierdal_6
   - first:
-      213: -1350329515670329513
-    second: Slime_azul_7
+      213: -3789754535504320316
+    second: Slime_azu_Izquierdal_7
   - first:
-      213: 7526677327828931238
-    second: Slime_azul_8
+      213: -5276880965605942756
+    second: Slime_azu_Izquierdal_8
   - first:
-      213: 2038975409156602624
-    second: Slime_azul_9
+      213: -3792537986545141595
+    second: Slime_azu_Izquierdal_9
   - first:
-      213: -5112935848017898868
-    second: Slime_azul_10
+      213: 2239521956164109026
+    second: Slime_azu_Izquierdal_10
   - first:
-      213: 4466753448130069553
-    second: Slime_azul_11
+      213: 8641846118618917276
+    second: Slime_azu_Izquierdal_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -84,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -129,282 +129,269 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Slime_azul_0
+      name: Slime_azu_Izquierdal_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
-        width: 16
-        height: 16
+        y: 160
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 85e5ea3e69423cf4fb0a24540520ffc1
-      internalID: 9006213065966497522
+      spriteID: 63cd44ccfa95ff040800000000000000
+      internalID: 4683560749069818934
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime_azul_1
+      name: Slime_azu_Izquierdal_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 16
+        x: 80
+        y: 160
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e91720ad8e8a84944a707cb893e5bb64
-      internalID: 7002318561078651939
+      spriteID: 3b438428c57802230800000000000000
+      internalID: 3612035732543648947
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime_azul_2
+      name: Slime_azu_Izquierdal_2
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 16
-        height: 16
+        x: 160
+        y: 160
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8e7f4d153b2b8ce42948fde584ad6f59
-      internalID: -5159639803582695219
+      spriteID: b616a25dd5f434100800000000000000
+      internalID: 91003681904419179
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime_azul_3
+      name: Slime_azu_Izquierdal_3
       rect:
         serializedVersion: 2
-        x: 48
-        y: 32
-        width: 16
-        height: 16
+        x: 240
+        y: 160
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 1eb113e960da38a4dbf5b1ccada9fba2
-      internalID: 7179907167737363474
+      spriteID: 2d2c58773db27e840800000000000000
+      internalID: 5253215677594321618
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime_azul_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f2785c7e4d8a332449c40105bc1abd2f
-      internalID: -4006967797393859577
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime_azul_5
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c88510a56b15be04ca804f032373cb69
-      internalID: 1962271553086592979
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime_azul_6
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b4f5d5ed4e56651469aaebc36c5ac992
-      internalID: -8658215141449667667
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime_azul_7
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 274fba93708cfe149a2dc43a1466afec
-      internalID: -1350329515670329513
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime_azul_8
+      name: Slime_azu_Izquierdal_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 16
-        height: 16
+        y: 80
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5f3efc66848dc934db89c292d9b71a5d
-      internalID: 7526677327828931238
+      spriteID: f76298fb10e2691f0800000000000000
+      internalID: -1038592079019039105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime_azul_9
+      name: Slime_azu_Izquierdal_5
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
+        x: 80
+        y: 80
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f589eca4bb0fa5c4f8d444be08902eed
-      internalID: 2038975409156602624
+      spriteID: b2bc606726b40fd50800000000000000
+      internalID: 6768993126196890411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime_azul_10
+      name: Slime_azu_Izquierdal_6
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
+        x: 160
+        y: 80
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 494465c8e7faf974a942d4f3131bd5f0
-      internalID: -5112935848017898868
+      spriteID: f184f6af05511ee40800000000000000
+      internalID: 5683847642261440543
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime_azul_11
+      name: Slime_azu_Izquierdal_7
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
+        x: 240
+        y: 80
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 107e7aac9ea90e6489d68bb9e046f7b1
-      internalID: 4466753448130069553
+      spriteID: 4c8e6553456186bc0800000000000000
+      internalID: -3789754535504320316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime_azu_Izquierdal_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1a990b48b0c4c6b0800000000000000
+      internalID: -5276880965605942756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime_azu_Izquierdal_9
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a83dc28bc23e5bc0800000000000000
+      internalID: -3792537986545141595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime_azu_Izquierdal_10
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e289d78a51641f10800000000000000
+      internalID: 2239521956164109026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime_azu_Izquierdal_11
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c996ed722410ee770800000000000000
+      internalID: 8641846118618917276
       vertices: []
       indices: 
       edges: []
@@ -413,7 +400,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ada03cc411c13ad4ea7f815a67e4970d
+    spriteID: 53a52ec3b6814aa4a866b12e082d6a6d
     internalID: 0
     vertices: []
     indices: 
@@ -421,20 +408,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":80.0,"y":80.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Slime_azul_0: 9006213065966497522
-      Slime_azul_1: 7002318561078651939
-      Slime_azul_10: -5112935848017898868
-      Slime_azul_11: 4466753448130069553
-      Slime_azul_2: -5159639803582695219
-      Slime_azul_3: 7179907167737363474
-      Slime_azul_4: -4006967797393859577
-      Slime_azul_5: 1962271553086592979
-      Slime_azul_6: -8658215141449667667
-      Slime_azul_7: -1350329515670329513
-      Slime_azul_8: 7526677327828931238
-      Slime_azul_9: 2038975409156602624
+      Slime_azu_Izquierdal_0: 4683560749069818934
+      Slime_azu_Izquierdal_1: 3612035732543648947
+      Slime_azu_Izquierdal_10: 2239521956164109026
+      Slime_azu_Izquierdal_11: 8641846118618917276
+      Slime_azu_Izquierdal_2: 91003681904419179
+      Slime_azu_Izquierdal_3: 5253215677594321618
+      Slime_azu_Izquierdal_4: -1038592079019039105
+      Slime_azu_Izquierdal_5: 6768993126196890411
+      Slime_azu_Izquierdal_6: 5683847642261440543
+      Slime_azu_Izquierdal_7: -3789754535504320316
+      Slime_azu_Izquierdal_8: -5276880965605942756
+      Slime_azu_Izquierdal_9: -3792537986545141595
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

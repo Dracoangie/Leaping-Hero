@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3637103857220420571
+--- !u!1 &435841489994107008
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 172585161185268533}
-  - component: {fileID: 6323419659186782421}
-  - component: {fileID: 9000707857430589064}
-  - component: {fileID: 1463167570222110483}
-  - component: {fileID: 2208614975873826092}
-  - component: {fileID: 8607839211285289668}
+  - component: {fileID: 6184066762846601283}
+  - component: {fileID: 3418393497418752608}
   m_Layer: 0
-  m_Name: PatrolEnemy
-  m_TagString: Enemy
+  m_Name: sprite
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &172585161185268533
+--- !u!4 &6184066762846601283
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3637103857220420571}
+  m_GameObject: {fileID: 435841489994107008}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.53, y: -0.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 172585161185268533}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6323419659186782421
+--- !u!212 &3418393497418752608
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3637103857220420571}
+  m_GameObject: {fileID: 435841489994107008}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -85,9 +81,9 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7002318561078651939, guid: 9a2b873aff1806243ae139c1116f1038, type: 3}
+  m_Sprite: {fileID: 3612035732543648947, guid: 04fe00ecdb2c84c4b9e30c4c44a96380, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -95,6 +91,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &3637103857220420571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 172585161185268533}
+  - component: {fileID: 9000707857430589064}
+  - component: {fileID: 1463167570222110483}
+  - component: {fileID: 2208614975873826092}
+  - component: {fileID: 8607839211285289668}
+  m_Layer: 0
+  m_Name: PatrolEnemy
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &172585161185268533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3637103857220420571}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.53, y: -0.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6184066762846601283}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &9000707857430589064
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -183,7 +215,6 @@ MonoBehaviour:
   patrolSpeed: 2
   patrolPointA: {x: 4, y: -0.5, z: 0}
   patrolPointB: {x: -1, y: -0.5, z: 0}
-  detectionRange: 5
 --- !u!95 &8607839211285289668
 Animator:
   serializedVersion: 7

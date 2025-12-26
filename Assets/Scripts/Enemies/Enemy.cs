@@ -13,9 +13,11 @@ public class Enemy : MonoBehaviour
     protected EnemyState currentState = EnemyState.Idle;
     protected Transform player;
     protected Rigidbody2D rb;
+    protected Animator  animator;
 
     protected virtual void Start()
     {
+        animator = GetComponent<Animator>();
         DeadEvent.OnPlayerDead += PlayerDied;
         rb = GetComponent<Rigidbody2D>();
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -36,7 +38,6 @@ public class Enemy : MonoBehaviour
                 HandleAction();
                 break;
             case EnemyState.Death:
-                HandleDeath();
                 break;
             case EnemyState.Victory:
                 break;
@@ -45,17 +46,10 @@ public class Enemy : MonoBehaviour
 
     protected virtual void HandleIdle()
     {
-        // **Acción principal que hará siempre que no esté en otro estado**
-        // Por defecto, podría ser solo esperar o una ligera animación.
-        // Las clases hijas implementarán el movimiento, patrulla, etc.
-        // Debug.Log(gameObject.name + " está en estado Idle.");
     }
 
     protected virtual void HandleAction()
     {
-        // **Acción cuando el player está cerca**
-        // Las clases hijas implementarán el ataque a distancia, la persecución, etc.
-        // Debug.Log(gameObject.name + " está en estado Action.");
     }
 
     public virtual void Die()
@@ -69,9 +63,9 @@ public class Enemy : MonoBehaviour
 
     protected virtual void HandleDeath()
     {
-        Debug.Log(gameObject.name + " ha muerto.");
+        animator.SetBool("isDead", true);
+        rb.linearVelocity = Vector2.zero;
         GetComponent<Collider2D>().enabled = false;
-        Destroy(gameObject, 2f);
     }
 
     public virtual void PlayerDied()
@@ -85,9 +79,8 @@ public class Enemy : MonoBehaviour
 
     protected virtual void HandleVictory()
     {
-        
+        animator.SetBool("Win", true);
         rb.linearVelocity = Vector2.zero;
-        Debug.Log(gameObject.name + " celebra la victoria.");
     }
 
     public void ChangeState(EnemyState newState)

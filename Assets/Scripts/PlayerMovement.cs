@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-    #region Movement Variables
+    #region Movement Variables;
+    private Vector2 moveInput;
+
     public float movingSpeed;
     public float jumpForce;
     public float acceleration = 50f;
