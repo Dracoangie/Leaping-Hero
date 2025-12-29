@@ -1,5 +1,6 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typingCoroutine;
     private bool isTyping = false;
     private string currentFullLine;
+    private bool interPressed;
 
     void OnEnable()
     {
@@ -55,7 +57,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (interPressed)
         {
             if (!dialoguePanel.activeSelf) return;
 
@@ -81,5 +83,11 @@ public class DialogueManager : MonoBehaviour
                 }
             }
         }
+        interPressed = false;
+    }
+
+    void OnJump(InputValue value)
+    {
+        interPressed = value.isPressed;
     }
 }

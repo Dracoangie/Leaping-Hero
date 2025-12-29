@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class Chest : MonoBehaviour
 {
@@ -12,16 +14,6 @@ public class Chest : MonoBehaviour
         dialogueAgainAux = true;
         animator = GetComponent<Animator>();
     }
-
-    void Update()
-    {
-        if (onTrigger && Input.GetKeyDown(KeyCode.E) && dialogueAgainAux)
-        {
-            onTrigger = false;
-            dialogueAgainAux = false;
-            animator.Play("ChestOpen");
-        }
-    }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -33,5 +25,15 @@ public class Chest : MonoBehaviour
     {
         if (other.CompareTag("Player"))
             onTrigger = false;
+    }
+
+    void OnInter(InputValue value)
+    {
+        if (onTrigger && dialogueAgainAux)
+        {
+            onTrigger = false;
+            dialogueAgainAux = false;
+            animator.Play("ChestOpen");
+        }
     }
 }

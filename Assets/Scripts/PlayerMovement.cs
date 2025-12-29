@@ -27,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector]
     public bool isDashing = false;
-    private bool dashPressed = false;
     #endregion
 
     #region States
@@ -163,6 +162,7 @@ public class PlayerMovement : MonoBehaviour
             rigidbody.linearVelocity = Vector2.zero;
             if (runParticles.isPlaying)
                 runParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            animator.SetBool("isMoving", false);
         }
     }
 
@@ -188,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (jumpHeld)
         {
-            if (grounded && !jumpBuffered && !isJumping && !isbufferJumping && !canDoubleJump)
+            if (grounded && !jumpBuffered && !isJumping && !isbufferJumping && !canDoubleJump && canMove)
             {
                 jumpBuffered = true;
                 isJumping = true;
@@ -219,13 +219,6 @@ public class PlayerMovement : MonoBehaviour
     #region Dash
     void HandleDashInput()
     {
-        if (dashPressed && canDash)
-        {
-            dashParticles.transform.position = transform.position;
-            dashParticles.Play();
-            StartCoroutine(Dash());
-        }
-
         if (isDashing)
         {
             EmitTrailEndParticles();
@@ -354,7 +347,7 @@ public class PlayerMovement : MonoBehaviour
                 isJumping = true;
                 StartCoroutine(JumpWithAnticipation());
             }
-            else if (!grounded && canDoubleJump && !hasDoubleJumped)
+            else if (!grounded && canDoubleJump && !hasDoubleJumped && canMove)
             {
                 hasDoubleJumped = true;
                 isJumping = true;
@@ -372,7 +365,12 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDash(InputValue value)
     {
-        dashPressed = value.isPressed;
+        if (canDash)
+        {
+            dashParticles.transform.position = transform.position;
+            dashParticles.Play();
+            StartCoroutine(Dash());
+        }
     }
 
     #endregion
