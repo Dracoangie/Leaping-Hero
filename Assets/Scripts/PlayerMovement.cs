@@ -320,6 +320,8 @@ public class PlayerMovement : MonoBehaviour
                 landParticles.Play();
                 landParticles.transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
             }
+            if(moveInput == 0)
+                rigidbody.linearVelocity = rigidbody.linearVelocity/2;
         }
 
         firstTime = false;
