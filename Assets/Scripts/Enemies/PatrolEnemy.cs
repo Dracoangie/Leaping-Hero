@@ -1,19 +1,16 @@
 using UnityEngine;
 
-
 public class PatrolEnemy : Enemy
 {
     public float patrolSpeed = 2f;
     public Transform patrolPointA;
     public Transform patrolPointB;
 
-    private Vector3 targetPoint;
+    private Vector2 targetPos;
+    private Vector2 worldPointA;
+    private Vector2 worldPointB;
 
-    private enum MovementType
-    {
-        move,
-        noMove
-    }
+    private enum MovementType { move, noMove }
 
     [SerializeField]
     private MovementType movementType = MovementType.move;
@@ -22,45 +19,46 @@ public class PatrolEnemy : Enemy
     {
         base.Start();
 
-        transform.position = patrolPointA.position;
-        targetPoint = patrolPointA.position;
-        if (patrolPointA.position == Vector3.zero && patrolPointB.position == Vector3.zero)
+        worldPointA = patrolPointA.position;
+        worldPointB = patrolPointB.position;
+
+        if (Vector2.Distance(worldPointA, worldPointB) < 0.1f)
         {
-            patrolPointA.position = transform.position;
-            patrolPointB.position = transform.position + new Vector3(5, 0, 0);
-            targetPoint = patrolPointB.position;
+            worldPointA = transform.position;
+            worldPointB = (Vector2)transform.position + new Vector2(5, 0);
         }
+        targetPos = worldPointB;
     }
 
     protected override void HandleIdle()
     {
         base.HandleIdle();
 
-        switch(movementType)
+        switch (movementType)
         {
             case MovementType.move:
-                Vector3 direction = (targetPoint - transform.position).normalized;
-                rb.linearVelocity = direction * patrolSpeed;
-
-                if (direction.x > 0.01f)
-                {
-                    transform.localScale = new Vector3(1, 1, 1);
-                }
-                else if (direction.x < -0.01f)
-                {
-                    transform.localScale = new Vector3(-1, 1, 1);
-                }
-                if (Vector2.Distance(transform.position, targetPoint) < 0.2f)
-                {
-                    if (targetPoint == patrolPointA.position)
-                        targetPoint = patrolPointB.position;
-                    else
-                        targetPoint = patrolPointA.position;
-                }
+                MoveTowardsTarget();
                 break;
             case MovementType.noMove:
                 break;
         }
     }
 
+    private void MoveTowardsTarget()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, targetPos, patrolSpeed * Time.deltaTime);
+
+        if (Vector2.Distance(transform.position, targetPos) < 0.1f)
+        {
+            targetPos = (targetPos == worldPointA) ? worldPointB : worldPointA;
+            FlipTowardsTarget();
+        }
+    }
+
+    private void FlipTowardsTarget()
+    {
+        float direction = targetPos.x - transform.position.x;
+        if (direction > 0) transform.localScale = new Vector3(1, 1, 1);
+        else if (direction < 0) transform.localScale = new Vector3(-1, 1, 1);
+    }
 }

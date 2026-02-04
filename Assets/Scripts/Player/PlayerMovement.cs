@@ -63,9 +63,15 @@ public class PlayerMovement : MonoBehaviour
     private ParticleSystem dashParticles;
     #endregion
 
+    [HideInInspector]
+    public Vector3 spawnPoint;
+
     #region Unity Methods
     void Start()
     {
+        if (spawnPoint != null)
+            transform.position = spawnPoint;
+
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
