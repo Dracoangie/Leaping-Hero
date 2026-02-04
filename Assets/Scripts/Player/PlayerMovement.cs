@@ -44,11 +44,13 @@ public class PlayerMovement : MonoBehaviour
 
     #region References
     public LayerMask whatIsGround;
+    [SerializeField] PlayerInfo playerInfo;
     private new Rigidbody2D rigidbody;
     private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private Transform visualTransform;
     private Vector3 originalScale;
+    
     #endregion
 
     #region Particles & Effects
@@ -83,6 +85,9 @@ public class PlayerMovement : MonoBehaviour
         trailEndParticles = transform.Find("TrailEnd").GetComponent<ParticleSystem>();
         dashTrail.emitting = false;
         canDoubleJump = false;
+
+        if (playerInfo.spawnPoint != Vector3.zero)
+            transform.position = playerInfo.spawnPoint;
     }
 
     void Update()
@@ -416,6 +421,12 @@ public class PlayerMovement : MonoBehaviour
         animator.Play("Player_Dead", 0, 0f);
         SetCanMove(false);
     }
+
+    public void setPlayerInfo(PlayerInfo playerInfo)
+        { this.playerInfo = playerInfo; }
+
+    public PlayerInfo getPlayerInfo()
+        { return playerInfo; }
 
     #region Gizmos
     private void OnDrawGizmosSelected()
