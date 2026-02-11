@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3da8307f3cc4dbc4d83fed91efacf1ce, type: 3}
   m_Name: PlayerInfo
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInfo
-  deathsCount: 0
+  deathsCount: 14
   spawnPoint: {x: 0, y: 0, z: 0}
-  spawnPointID: 0
+  spawnPointID: 2

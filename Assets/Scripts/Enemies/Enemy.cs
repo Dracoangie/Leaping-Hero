@@ -87,4 +87,9 @@ public class Enemy : MonoBehaviour
     {
         currentState = newState;
     }
+
+    protected virtual void OnDestroy()
+    {
+        DeadEvent.OnPlayerDead -= PlayerDied;
+    }
 }

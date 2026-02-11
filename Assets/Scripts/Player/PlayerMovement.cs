@@ -63,15 +63,9 @@ public class PlayerMovement : MonoBehaviour
     private ParticleSystem dashParticles;
     #endregion
 
-    [HideInInspector]
-    public Vector3 spawnPoint;
-
     #region Unity Methods
     void Start()
     {
-        if (spawnPoint != null)
-            transform.position = spawnPoint;
-
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
@@ -422,6 +416,7 @@ public class PlayerMovement : MonoBehaviour
     public void dead()
     
     {
+        playerInfo.deathsCount++;
         animator.SetLayerWeight(0, 0);
         animator.SetLayerWeight(2, 1);
         animator.Play("Player_Dead", 0, 0f);
@@ -433,6 +428,12 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerInfo getPlayerInfo()
         { return playerInfo; }
+
+    private void OnDestroy()
+    {
+        DialogueEvents.OnDialogueTriggered -= StartDialogue;
+        DialogueEvents.OnDialogueEnded -= EndDialogue;
+    }
 
     #region Gizmos
     private void OnDrawGizmosSelected()

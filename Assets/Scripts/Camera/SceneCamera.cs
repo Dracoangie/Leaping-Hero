@@ -108,8 +108,8 @@ public class SceneCamera : MonoBehaviour
 
     public void SetCameraFixed(Vector3 position, float size)
     {
-        if (mode == CameraMode.Fixed) return;
-        if(isTransicioning == true)
+        if (position == transform.position) return;
+        if (isTransicioning == true)
             transitionTimer = 0f;
         isTransicioning = true;
         mode = CameraMode.Fixed;
