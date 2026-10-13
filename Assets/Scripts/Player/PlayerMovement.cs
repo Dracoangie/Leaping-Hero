@@ -84,7 +84,8 @@ public class PlayerMovement : MonoBehaviour
         dashParticles = transform.Find("Dash").GetComponent<ParticleSystem>();
         trailEndParticles = transform.Find("TrailEnd").GetComponent<ParticleSystem>();
         dashTrail.emitting = false;
-        canDoubleJump = false;
+        canDoubleJump = playerInfo.doubleJumpUnlocked;
+        canDash = playerInfo.dashUnlocked;
 
         if (playerInfo.spawnPoint != Vector3.zero)
             transform.position = playerInfo.spawnPoint;

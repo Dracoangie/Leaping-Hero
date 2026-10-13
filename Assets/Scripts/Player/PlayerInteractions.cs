@@ -5,7 +5,6 @@ public class PlayerInteractions : MonoBehaviour
 {
     private bool deathState = false;
     private bool isInChest;
-    private int chestsOpened;
     private bool interPressed;
 
     private PlayerMovement playerMovement;
@@ -44,13 +43,16 @@ public class PlayerInteractions : MonoBehaviour
 
     private void ChestPowrUp()
     {
-        chestsOpened++;
-        switch (chestsOpened)
+        PlayerInfo playerInfo = playerMovement.getPlayerInfo();
+        playerInfo.chestsOpened++;
+        switch (playerInfo.chestsOpened)
         {
             case 1:
+                playerInfo.doubleJumpUnlocked = true;
                 playerMovement.canDoubleJump = true;
                 break;
             case 2:
+                playerInfo.dashUnlocked = true;
                 playerMovement.canDash = true;
                 break;
             default:
@@ -66,7 +68,7 @@ public class PlayerInteractions : MonoBehaviour
             deathState = true;
             playerMovement.dead();
         }
-        else if(!deathState && playerMovement.isDashing)
+        else if(!deathState && playerMovement.isDashing && other.GetComponent<Enemy>())
             other.GetComponent<Enemy>().Die();
 
     }

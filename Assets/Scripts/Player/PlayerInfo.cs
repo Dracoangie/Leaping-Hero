@@ -5,6 +5,11 @@ public class PlayerInfo : ScriptableObject
 {
     public int deathsCount;
 
+    [Header("Abilities")]
+    public bool doubleJumpUnlocked;
+    public bool dashUnlocked;
+    public int chestsOpened;
+
     [Header("Spawn")]
     public Vector3 spawnPoint = Vector3.zero;
     public int spawnPointID;
