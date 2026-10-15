@@ -1,14 +1,14 @@
-using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class SPawnPoint : MonoBehaviour
 {
     [SerializeField] private Vector3 SpawnPoint = Vector3.zero;
+    [SerializeField] private bool useTransformPosition;
     [SerializeField] private int id = 0;
 
     void Awake()
     {
-        if(SpawnPoint == Vector3.zero)
+        if(useTransformPosition)
             SpawnPoint = transform.position;
     }
 
@@ -18,11 +18,9 @@ public class SPawnPoint : MonoBehaviour
 
         PlayerInfo playerInfo = other.GetComponent<PlayerMovement>().getPlayerInfo();
 
-        if(playerInfo.spawnPointID < id)
-        {
-            playerInfo.spawnPointID = id;
-            playerInfo.spawnPoint = SpawnPoint;
-        }
+        playerInfo.spawnPointID = id;
+        playerInfo.spawnPoint = SpawnPoint;
+        playerInfo.spawnScenePath = other.gameObject.scene.path;
 
         other.GetComponent<PlayerMovement>().setPlayerInfo(playerInfo);
     }

@@ -30,6 +30,7 @@ public class DeadUI : MonoBehaviour
 
     public void Menu()
     {
+        PlayerInfo.StartNewSession();
         SceneManager.LoadScene(0);
     }
 

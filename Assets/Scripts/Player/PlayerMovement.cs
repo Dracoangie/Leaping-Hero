@@ -66,6 +66,10 @@ public class PlayerMovement : MonoBehaviour
     #region Unity Methods
     void Start()
     {
+        playerInfo.InitializeSession();
+        if (playerInfo.spawnScenePath != gameObject.scene.path)
+            playerInfo.ResetCheckpoint();
+
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
@@ -87,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         canDoubleJump = playerInfo.doubleJumpUnlocked;
         canDash = playerInfo.dashUnlocked;
 
-        if (playerInfo.spawnPoint != Vector3.zero)
+        if (playerInfo.spawnPointID >= 0)
             transform.position = playerInfo.spawnPoint;
     }
 

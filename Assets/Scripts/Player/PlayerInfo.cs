@@ -12,5 +12,34 @@ public class PlayerInfo : ScriptableObject
 
     [Header("Spawn")]
     public Vector3 spawnPoint = Vector3.zero;
-    public int spawnPointID;
+    public int spawnPointID = -1;
+    public string spawnScenePath;
+
+    private static int sessionVersion;
+    [System.NonSerialized] private int initializedSessionVersion = -1;
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    public static void StartNewSession()
+    {
+        sessionVersion++;
+    }
+
+    public void InitializeSession()
+    {
+        if (initializedSessionVersion == sessionVersion) return;
+
+        deathsCount = 0;
+        doubleJumpUnlocked = false;
+        dashUnlocked = false;
+        chestsOpened = 0;
+        ResetCheckpoint();
+        initializedSessionVersion = sessionVersion;
+    }
+
+    public void ResetCheckpoint()
+    {
+        spawnPoint = Vector3.zero;
+        spawnPointID = -1;
+        spawnScenePath = string.Empty;
+    }
 }

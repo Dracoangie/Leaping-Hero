@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInfo
   deathsCount: 14
   spawnPoint: {x: 0, y: 0, z: 0}
-  spawnPointID: 2
+  spawnPointID: -1
